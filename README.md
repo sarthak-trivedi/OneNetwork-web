@@ -1,2 +1,2 @@
-# OneNetwork-web
-The web portal on which project idea sharing and team collaboration is done.
+# One Network
+One Network is the application that provide DA-IICT students to take internship unnder professor so that student can colloborate with other students and also suggest their idea to the professors and also students can apply to the professor's project.
