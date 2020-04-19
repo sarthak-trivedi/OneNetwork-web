@@ -10,7 +10,7 @@ if(isset($_SESSION["firsttime"])){
 }
 
 if(!isset($_GET["id"])){
-    die("Invalid link");
+    redirect("profile.php?id=".$_SESSION["userid"]);
 }else{
     $user_id = mysqli_real_escape_string($con, $_GET["id"]);
     if(!user_already_exists($con, $user_id)){
@@ -136,11 +136,7 @@ if(!isset($_GET["id"])){
                     <input type="submit" value="Upload Image" name="file_upload">
                 </form>
 
-                <form action="<?php echo $_SERVER["PHP_SELF"]."?id=".$user_id; ?>" method="POST" enctype="multipart/form-data">
-                    Select resume to upload:
-                    <input type="file" name="image1" id="fileToUpload">
-                    <input type="submit" value="Upload Resume" name="file_upload">
-                </form>
+                
                         <?php
                     }
                 ?>
@@ -211,7 +207,7 @@ if(!isset($_GET["id"])){
 
 <?php       
                     }else{
-                        $query1 = "SELECT `interest_categories`.`name` , GROUP_CONCAT(`interests`.`name`) AS `interest` FROM `interests` JOIN `interest_categories` ON (interest_categories.id = interests.category) JOIN `user_interests` ON (interests.id = user_interests.interest_id AND user_interests.user_id = '".$user_id."') GROUP BY(`interest_categories`.`name`)";
+                        $query1 = "SELECT `interest_categories`.`name` , GROUP_CONCAT(\" \",`interests`.`name`) AS `interest` FROM `interests` JOIN `interest_categories` ON (interest_categories.id = interests.category) JOIN `user_interests` ON (interests.id = user_interests.interest_id AND user_interests.user_id = '".$user_id."') GROUP BY(`interest_categories`.`name`)";
                         $result1 = mysqli_query($con, $query1) or die(mysqli_error($con));
                         while($data1 = mysqli_fetch_assoc($result1)){
                             echo '
@@ -236,30 +232,29 @@ if(!isset($_GET["id"])){
             
             <div class="MainPannel Sections">
                 <div class="container">
-                    <form class="form-inline">
-                        <i class="fa fa-search" aria-hidden="true"></i>
-                        <input class="form-control form-control-sm ml-3 w-75" type="text" placeholder="Search Projects" aria-label="Search">
-                    </form>
+                    
                         
 
-                    <div id="content">
+                    <div id="contents">
 
 <?php require_once 'header.php'; ?>
  
  <div class="MainPannel Sections">
      <div class="ListOfProjects">
          <table border="0">
+                    <?php if($user_id==$_SESSION["userid"]){ ?>
              <tr>
                  <td>
                      <a href="post_project.php"><button type="submit" name="post_projects" formmethod="" formaction="" class="postProject_btn"><img src="../images/plus.png" style="padding-right:20px;" height="35px" width="55px">Post Project</button></a>
                      <a href="post_project.php"><button type="submit" name="post_projects" formmethod="" formaction="" class="postProject_btni"><img src="../images/plus.png" style="padding-right:20px;" height="35px" width="55px"></button></a>
                  </td>
              </tr>
+                <?php } ?>
              <tr>
                  <td id="post_container">
                      <?php
 
-$query = "SELECT `users`.`role`,`users`.`id` as `user_id` ,`projects`.`mentor` ,`users`.`profile_pic`,`users`.`firstname`,`users`.`lastname`, `projects`.`title`, `projects`.`description`, `project_types`.`name`, `projects`.`id`, `project_status`.`status` FROM `users` JOIN `projects` ON (projects.creator = users.id) JOIN project_types ON (project_types.id = projects.project_type) JOIN `project_status` ON (project_status.id = projects.status) WHERE `projects`.`deleted`=0 AND `projects`.`creator`='".$user_id."' OR `projects`.`id` IN (SELECT `project_id` FROM `project_members` WHERE `user_id`='".$user_id."') ORDER BY `projects`.`id` DESC";
+$query = "SELECT `users`.`role`,`users`.`id` as `user_id` ,`projects`.`mentor` ,`users`.`profile_pic`,`users`.`firstname`,`users`.`lastname`, `projects`.`title`, `projects`.`description`, `project_types`.`name`, `projects`.`id`, `project_status`.`status` FROM `users` JOIN `projects` ON (projects.creator = users.id) JOIN project_types ON (project_types.id = projects.project_type) JOIN `project_status` ON (project_status.id = projects.status) WHERE (`projects`.`deleted`=0 AND (`projects`.`creator`='".$user_id."' OR `projects`.`id` IN (SELECT `project_id` FROM `project_members` WHERE `user_id`='".$user_id."'))) ORDER BY `projects`.`id` DESC";
 $result = mysqli_query($con, $query) or die(mysqli_error($con));
 while($data = mysqli_fetch_assoc($result)){
     $query2 = "SELECT * FROM `applied_users` WHERE `project_id`=".$data["id"]." AND `user_id`='".$_SESSION["userid"]."'";
@@ -364,6 +359,23 @@ while($data = mysqli_fetch_assoc($result)){
                       
                     });
         });
+
+        $('#post_container').on('submit','#delete_form', function(){
+                var con = confirm("Are you sure you want to delete this project?");
+                if(con == true){
+                        $.ajax({
+                        type: 'POST',
+                        url: 'ajax/delete_project.php',
+                        data: $(this).serialize(),
+                        success: function(msg){
+                            $('#display_msg').html(msg);
+                        }
+                    });
+                    update_section();
+                }
+                
+                return false;
+            });
 
         });
     </script>

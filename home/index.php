@@ -54,8 +54,8 @@ if(isset($_SESSION["firsttime"])){
                         while($data =  mysqli_fetch_assoc($result)){
                             ?>
                     <div class="custom-control custom-checkbox">
-                        <input name="project_uploaded_by[]" type="checkbox" class="custom-control-input" value="<?php echo $data["id"]; ?>" id="<?php echo $data["id"]; ?>">
-                        <label class="custom-control-label" for="<?php echo $data["id"]; ?>"><?php echo $data["name"]; ?></label>
+                        <input name="project_uploaded_by[]" type="checkbox" class="custom-control-input" value="<?php echo $data["id"]; ?>" id="<?php echo "project_by_".$data["id"]; ?>">
+                        <label class="custom-control-label" for="<?php echo "project_by_".$data["id"]; ?>"><?php echo $data["name"]; ?></label>
                     </div>
                             <?php
                         }
@@ -73,8 +73,8 @@ if(isset($_SESSION["firsttime"])){
                         while($data =  mysqli_fetch_assoc($result)){
                             ?>
                     <div class="custom-control custom-checkbox">
-                        <input name="interests[]" type="checkbox" class="custom-control-input" value="<?php echo $data["id"]; ?>" id="<?php echo $data["id"]; ?>">
-                        <label class="custom-control-label" for="<?php echo $data["id"]; ?>"><?php echo $data["name"]; ?></label>                                        
+                        <input name="interests[]" type="checkbox" class="custom-control-input" value="<?php echo $data["id"]; ?>" id="<?php echo "interest_".$data["id"]; ?>">
+                        <label class="custom-control-label" for="<?php echo "interest_".$data["id"]; ?>"><?php echo $data["name"]; ?></label>                                        
                     </div>
                             <?php
                         }
@@ -93,8 +93,8 @@ if(isset($_SESSION["firsttime"])){
                             ?>
                     
                     <div class="custom-control custom-checkbox">
-                        <input name="project_types[]" type="checkbox" class="custom-control-input" value="<?php echo $data["id"]; ?>" id="<?php echo $data["id"]; ?>">
-                        <label class="custom-control-label" for="<?php echo $data["id"]; ?>"><?php echo $data["name"]; ?></label>                                        
+                        <input name="project_types[]" type="checkbox" class="custom-control-input" value="<?php echo $data["id"]; ?>" id="<?php echo "project_type_".$data["id"]; ?>">
+                        <label class="custom-control-label" for="<?php echo "project_type_".$data["id"]; ?>"><?php echo $data["name"]; ?></label>                                        
                     </div>
                             <?php
                         }
