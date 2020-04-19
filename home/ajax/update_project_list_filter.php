@@ -3,6 +3,7 @@
     require_once '../../functions.php';
 
     if(!logged_in()){
+        die("Session expired");
         redirect("../");
     }
     if(isset($_SESSION["firsttime"])){
