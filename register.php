@@ -44,7 +44,7 @@ if(isset($_POST["register_btn"])){
 					$query = "INSERT INTO `create_users` (`code1`,`code2`,`userid`,`password`,`firstname`,`lastname`,`time`) VALUES('".mysqli_real_escape_string($con, $code1)."','".mysqli_real_escape_string($con, $code2)."','".mysqli_real_escape_string($con, $userid)."','".mysqli_real_escape_string($con, md5($password))."','".mysqli_real_escape_string($con, ucfirst(strtolower($firstname)))."','".mysqli_real_escape_string($con, ucfirst(strtolower($lastname)))."',".time().")";
 					if(mysqli_query($con, $query) or die(mysqli_error($con))){
 							$url = "http://".$_SERVER['SERVER_NAME'].chop($_SERVER["PHP_SELF"],"register.php")."add_user.php?code1=".$code1."&code2=".$code2;
-							$header = "From: One Network <onenetwork.2019@gmail.com>\r\n";
+							$header = "From: One Network <".$oneNetworkEmail.">\r\n";
 							$header .= "Content-Type: text/html\r\n";
 							$body = "
 							<p><a href='$url'>Click here</a> or copy the link below and paste in your browser to verify the email</p>

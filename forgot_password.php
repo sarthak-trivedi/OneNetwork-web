@@ -40,7 +40,7 @@ if(!isset($_GET["user"])){
             $query = "INSERT INTO `forgot_passwords` (`code1`,`code2`,`userid`,`time`,`used`) VALUES('".mysqli_real_escape_string($con, $code1)."','".mysqli_real_escape_string($con, $code2)."','".mysqli_real_escape_string($con, $userid)."',".time().",0)";
             if(mysqli_query($con, $query)){
                 $url = "http://".$_SERVER['SERVER_NAME'].chop($_SERVER["PHP_SELF"],"forgot_password.php")."change_password.php?code1=".$code1."&code2=".$code2;
-                $header = "From: One Network <onenetwork.2019@gmail.com>\r\n";
+                $header = "From: One Network <".$oneNetworkEmail.">\r\n";
                 $header .= "Content-Type: text/html\r\n";
                 $body = "
                 <p><a href='$url'>Click here</a> or copy the link below and paste in your browser to change the password</p>
