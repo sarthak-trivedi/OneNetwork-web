@@ -62,7 +62,7 @@ if(logged_in()){
 							$header .= "Content-Type: text/html\r\n";
 							$body = "
 							<p><a href='$url'>Click here</a> or copy the link below and paste in your browser to verify the email</p>
-							<p>$url</p>
+							<a>$url</a>
 							";
 							mail($email, "Email verification", $body, $header);
 							$msg = "Mail sent to ".htmlentities($email);
