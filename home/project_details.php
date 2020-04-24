@@ -112,7 +112,7 @@ if(!isset($_GET["id"])){
                                     <a href="<?php echo "profile.php?id=".$data1["user_id"]; ?>">
                                         <img class="user-avatar rounded-circle" src="../images/user_pics/<?php echo $data1["profile_pic"] ?>" alt="User Avatar" width: 50px height: 50px style="margin: 0%;margin-left: 5px;display: block; float: left">
                                     
-                                    <p style="display: inline;" class="TitleName"><?php echo $data1["firstname"]." ".$data1["lastname"]." </a>"; if($data1["role"]==1){ echo "<font color='green'>[Faculty]</font>"; } if($data1["user_id"]==$_SESSION["userid"]){ echo '<form method="POST" action="project_details.php?id='.$project_id.'" id="delete_form" style="display: inline;"><input type="hidden" name="project_id" value="'.$data1["id"].'"><input name="delete_button" style="ouline: none; border: none;" type="submit" class="closeicon" value="Delete"></form>'; } ?>
+                                    <p style="display: inline;" class="TitleName"><?php echo htmlentities($data1["firstname"])." ".htmlentities($data1["lastname"])." </a>"; if($data1["role"]==1){ echo "<font color='green'>[Faculty]</font>"; } if($data1["user_id"]==$_SESSION["userid"]){ echo '<form method="POST" action="project_details.php?id='.$project_id.'" id="delete_form" style="display: inline;"><input type="hidden" name="project_id" value="'.$data1["id"].'"><input name="delete_button" style="ouline: none; border: none;" type="submit" class="closeicon" value="Delete"></form>'; } ?>
                                     </p>
                                     <hr class="closehr">
                                     <p class="NameDescription">
@@ -179,7 +179,7 @@ if(!isset($_GET["id"])){
                     <a href="profile.php?id=<?php echo $data["id"]; ?>">
                         <img class="user-avatar rounded-circle" src="../images/user_pics/<?php echo $data["profile_pic"]; ?>" alt="User Avatar"width: 50px height: 50px style="margin: 0%;margin-left: 5px;display: block; float: left">
                     
-                    <p class="TitleName"><?php echo $data["firstname"]." ".$data["lastname"]; ?></p></a>
+                    <p class="TitleName"><?php echo htmlentities($data["firstname"])." ".htmlentities($data["lastname"]); ?></p></a>
                     
                 </div>
 			</div>
@@ -203,7 +203,7 @@ if(!isset($_GET["id"])){
                     <a href="profile.php?id=<?php echo $data["id"]; ?>">
                         <img class="user-avatar rounded-circle" src="../images/user_pics/<?php echo $data["profile_pic"]; ?>" alt="User Avatar"width: 50px height: 50px style="margin: 0%;margin-left: 5px;display: block; float: left">
                     
-                    <p class="TitleName"><?php echo $data["firstname"]." ".$data["lastname"]; ?></p></a>
+                    <p class="TitleName"><?php echo htmlentities($data["firstname"])." ".htmlentities($data["lastname"]); ?></p></a>
                     
                 </div>
 			</div>
@@ -234,7 +234,7 @@ if(!isset($_GET["id"])){
                     <a href="profile.php?id=<?php echo $data["user_id"]; ?>">
                         <img class="user-avatar rounded-circle" src="../images/user_pics/<?php echo $data["profile_pic"]; ?>" alt="User Avatar"width: 50px height: 50px style="margin: 0%;margin-left: 5px;display: block; float: left">
                     
-                    <p class="TitleName"><?php echo $data["firstname"]." ".$data["lastname"]; ?></p></a>
+                    <p class="TitleName"><?php echo htmlentities($data["firstname"])." ".htmlentities($data["lastname"]); ?></p></a>
                     <hr class="closehr">
                     <p class="NameDescription">
                         <?php echo $data["message"]; ?>

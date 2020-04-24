@@ -25,7 +25,7 @@
                                     <a href="<?php echo "profile.php?id=".$data["user_id"]; ?>">
                                         <img class="user-avatar rounded-circle" src="../images/user_pics/<?php echo $data["profile_pic"] ?>" alt="User Avatar" width: 50px height: 50px style="margin: 0%;margin-left: 5px;display: block; float: left">
                                     
-                                    <p style="display: inline;" class="TitleName"><?php echo $data["firstname"]." ".$data["lastname"]." </a>"; if($data["role"]==1){ echo "<font color='green'>[Faculty]</font>"; }  if($data["user_id"]==$_SESSION["userid"]){ echo '<form id="delete_form" style="display: inline;"><input type="hidden" name="project_id" value="'.$data["id"].'"><input style="ouline: none; border: none;" type="submit" class="closeicon" value="Delete"></form>'; } ?>
+                                    <p style="display: inline;" class="TitleName"><?php echo htmlentities($data["firstname"])." ".htmlentities($data["lastname"])." </a>"; if($data["role"]==1){ echo "<font color='green'>[Faculty]</font>"; }  if($data["user_id"]==$_SESSION["userid"]){ echo '<form id="delete_form" style="display: inline;"><input type="hidden" name="project_id" value="'.$data["id"].'"><input style="ouline: none; border: none;" type="submit" class="closeicon" value="Delete"></form>'; } ?>
                                     </p>
                                     <hr class="closehr">
                                     <p class="NameDescription">
