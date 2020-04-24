@@ -11,7 +11,7 @@ $user = "root";
 $password = "";
 $database = "onenetwork";
 
-$oneNetworkEmail = "no-reply@one-network.ddns.net";
+$oneNetworkEmail = "one-network@ddns.net";
 
 
 $con = mysqli_connect($host, $user, $password, $database);

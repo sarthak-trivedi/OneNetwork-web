@@ -47,12 +47,12 @@ if(isset($_POST["register_btn"])){
 							$header = "From: One Network <".$oneNetworkEmail.">\r\n";
 							$header .= "Content-Type: text/html\r\n";
 							$body = "
-							<p><a href='$url'>Click here</a> or copy the link below and paste in your browser to verify the email</p>
+							<p><a href='$url'>Verify email</a></p>
 							<p>$url</p>
 							";
-							mail($email, "Email verification", $body, $header);
+							$response = mail($email, "Email verification", $body, $header);
 							$msg = "Mail sent to ".htmlentities($email);
-							
+
 							$userid = "";
 							$password = "";
 							$firstname = "";
