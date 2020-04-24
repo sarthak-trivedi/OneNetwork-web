@@ -122,16 +122,16 @@ input{
             <br>
             <form class="form" method="POST" action="<?php echo $_SERVER["PHP_SELF"]."?code1=".$_GET["code1"]."&code2=".$_GET["code2"]; ?>">
                 <div class="form-group">
-                    <?phpif(!isset($_POST["password_btn"])){?>
+                    <?php if(!isset($_POST["password_btn"])){ ?>
                         <input id="username" name="password" class="form-control text" autocomplete="off" autofocus="on" required="required" type="password" placeholder="Enter the new password"/>
-                    <?php}?>            
+                    <?php } ?>            
                 </div>
 
                     <div class="form-group">
                         <center>
-                        <?phpif(!isset($_POST["password_btn"])){?>
+                        <?php if(!isset($_POST["password_btn"])){?>
                             <input name="password_btn" type="submit" id="signupbtn" class=" btn-signup btn-light" value="Change" /> 
-                        <?php}?>
+                        <?php } ?>
                             
                             <br />
             <font color="red"><?php echo $error; ?></font>
