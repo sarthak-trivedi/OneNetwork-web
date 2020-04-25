@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 19, 2020 at 05:01 PM
+-- Generation Time: Apr 25, 2020 at 11:19 AM
 -- Server version: 10.1.40-MariaDB
 -- PHP Version: 7.3.5
 
@@ -261,7 +261,7 @@ CREATE TABLE `users` (
   `role` int(11) NOT NULL,
   `firsttime` tinyint(1) NOT NULL DEFAULT '1',
   `profile_pic` varchar(50) NOT NULL DEFAULT 'img_avatar.png',
-  `resume` varchar(50) NOT NULL
+  `resume` varchar(50) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -394,7 +394,7 @@ ALTER TABLE `interest_categories`
 -- AUTO_INCREMENT for table `projects`
 --
 ALTER TABLE `projects`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `project_status`
