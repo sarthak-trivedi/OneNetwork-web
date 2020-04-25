@@ -11,5 +11,6 @@ One Network is the application that provide DA-IICT students to take internship 
 ### Steps to install on local machine
 - Clone the repository and paste it into apache server's folder (htdocs)
 - Start mysql server and import onenetwork.sql (Available on the root folder of this project)
+- Change sql credentials in the file named `config.php` 
 - Start apache server and open it on your browser
 - `Note:` you must have SMTP configured on your local server in order to make email functionality work
